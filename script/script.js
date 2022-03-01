@@ -18,16 +18,41 @@ function calcular() {
 
   let qdtTotalCarne =
     carnePP(duracao) + adultos + (carnePP(duracao) / 2 + criancas);
-  console.log(qdtTotalCarne);
+  let qdtTotalCerveja = cervejaPP(duracao) + adultos + cervejaPP(duracao) / 2;
+  let qdtTotalBebidas =
+    bebidasPP(duracao) + adultos + (bebidasPP(duracao) / 2 + criancas);
+
+  resultado.innerHTML = `<p>${qdtTotalCarne / 1000}Kg de carne</p>`;
+  resultado.innerHTML += `<p>${Math.ceil(
+    qdtTotalCerveja / 355
+  )} Lata de cerbeja</p>`;
+  resultado.innerHTML += `<p>${Math.ceil(
+    qdtTotalBebidas / 2000
+  )} Garrafas de bebida</p>`;
 }
 
 function carnePP(duracao) {
-  let carne = 400;
   if (duracao >= 6) {
-    carne = 650;
     return 650;
   } else {
     return 400;
   }
   return carne;
+}
+function cervejaPP(duracao) {
+  if (duracao >= 6) {
+    return 2000;
+  } else {
+    return 1200;
+  }
+  return cerveja;
+}
+
+function bebidaPP(duracao) {
+  if (duracao >= 6) {
+    return 2000;
+  } else {
+    return 1000;
+  }
+  return bebidas;
 }
